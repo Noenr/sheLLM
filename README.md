@@ -18,32 +18,32 @@ An operating shell for LLMs. A protocol that transforms conversational interacti
 
 ---
 
-**sheLLM** est un protocole qui transforme l'interaction conversationnelle avec les Large Language Models (LLMs) en une session de commande stateful et programmable. Il dote les LLMs d'un shell conversationnel pour la gestion avancée de personas, le contrôle de l'output et la persistance de la mémoire.
+**sheLLM** is a protocol that transforms conversational interaction with Large Language Models (LLMs) into a stateful and programmable command session. It equips LLMs with a conversational shell for advanced persona management, output control, and memory persistence.
 
-## ✨ Fonctionnalités Principales
+## Core Features
 
--   **🤖 Gestion de Personas Persistants :** Créez (`/uCR`), chargez (`/uX`) et supprimez (`/uDEL`) des profils utilisateurs avec leur propre configuration mémorisée.
--   **⌨️ Interface de Commande Intuitive :** Pilotez le style (`/Sp`), le format (`/Fo`) et la structure (`/Me`) des réponses du LLM avec une syntaxe simple et puissante.
--   **🧠 Interaction Stateful par Session :** Initialisez un persona en début de chat et interagissez avec lui de manière contextuelle. Le LLM se souvient de l'état de l'agent pour toute la durée du chat.
--   **🔒 Protocole Strict et Validable :** Une syntaxe claire et une politique de tolérance zéro pour les erreurs, garantissant des interactions fiables et prévisibles.
+-   **Persistent Persona Management:** Create (`/uCR`), load (`/uX`), and delete (`/uDEL`) user profiles with their own memorized configuration.
+-   **Intuitive Command Interface:** Drive the style (`/Sp`), format (`/Fo`), and structure (`/Me`) of the LLM's responses with a simple and powerful syntax.
+-   **Stateful Session Interaction:** Initialize a persona at the start of a chat and interact with it contextually. The LLM remembers the agent's state for the entire duration of the chat.
+-   **Strict & Validated Protocol:** A clear syntax and a zero-tolerance policy for errors, ensuring reliable and predictable interactions.
 
-## 🚀 Comment ça Marche ?
+## How It Works
 
-`sheLLM` fonctionne comme une couche d'interprétation de commandes qui s'exécute avant que le LLM ne traite le prompt.
+`sheLLM` works as a command interpretation layer that executes before the LLM processes the prompt.
 
-1.  **Création :** Un utilisateur est créé via `/uCR` avec un fichier de configuration définissant son `USER_ID` et ses règles.
-2.  **Initialisation :** L'utilisateur est chargé en mémoire pour la session de chat via `/u0`, `/u1`, etc.
-3.  **Exécution :** Les commandes suivantes (`/SpC`, `/MeLi`...) sont interceptées pour modifier le comportement de l'IA sans avoir à les ré-expliquer.
+1.  **Creation:** A user is created via `/uCR` with a configuration file defining their `USER_ID` and rules.
+2.  **Initialization:** The user is loaded into memory for the chat session via `/u0`, `/u1`, etc.
+3.  **Execution:** Subsequent commands (`/SpC`, `/MeLi`...) are intercepted to modify the AI's behavior without needing to be re-explained.
 
-### Exemple d'utilisation
+### Usage Example
 
 ```bash
-# 1. Créer un nouvel utilisateur "u1" à partir d'un fichier de conf
-/uCR "u1" + [Contenu du fichier de configuration avec USER_ID = "u1"]
+# 1. Create a new user "u1" from a configuration file
+/uCR "u1" + [Content of the configuration file with USER_ID = "u1"]
 
-# 2. Initialiser une session avec ce nouvel utilisateur
-/u1 /SpC /Fo -m /MeLi Bonjour, présente-toi.
+# 2. Initialize a session with this new user
+/u1 /SpC /Fo -m /MeLi Hello, introduce yourself.
 
-# 3. La configuration est maintenant active. Les commandes suivantes sont plus courtes.
-# Le LLM se souvient d'utiliser un langage courant, du Markdown et des listes.
-Fais-moi une liste des planètes du système solaire.
+# 3. The configuration is now active. Subsequent commands are shorter.
+# The LLM remembers to use standard language, Markdown, and lists.
+Give me a list of the planets in the solar system.
