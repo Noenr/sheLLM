@@ -7,7 +7,7 @@ An operating shell for LLMs. A protocol that transforms conversational interacti
 
 <p align="center">
   <a href="https://github.com/VOTRE-NOM/sheLLM/blob/main/LICENSE">
-    <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT">
+    <img src="https://img.shields.io/badge/License-MIT-white.svg" alt="License: MIT">
   </a>
   <img src="https://img.shields.io/badge/Protocol-v2.7-informational.svg" alt="Protocol Version">
   <img src="https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg" alt="Contributions Welcome">
