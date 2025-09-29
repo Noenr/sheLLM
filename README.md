@@ -14,7 +14,7 @@ An operating shell for LLMs. A protocol that transforms conversational interacti
 </p>
 
 <h1 align="center">sheLLM</h1>
-<p align="center"><i>Un shell d'exploitation pour l'ère de l'intelligence artificielle.</i></p>
+<p align="center"><i>sheLLM: The Protocol for a Programmable AI.</i></p>
 
 ---
 
