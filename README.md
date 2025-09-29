@@ -2,7 +2,7 @@
 An operating shell for LLMs. A protocol that transforms conversational interaction into a stateful, programmable command-line session for advanced persona management.
 
 <p align="center">
-  <img src="./assets/shellm-logo.png" alt="sheLLM Logo" width="700"/>
+  <img src="./assets/sheLLM.png" alt="sheLLM Logo" width="700"/>
 </p>
 
 <p align="center">
