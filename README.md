@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/Protocol-v7.0-informational.svg" alt="Protocol Version">
   <img src="https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg" alt="Contributions Welcome">
   <a href="https://github.com/YOUR-USERNAME/sheLLM/stargazers">
-    <img src="https://img.shields.io/github/stars/YOUR-USERNAME/sheLLM?style=social" alt="GitHub stars">
+    <img src="https://img.shields.io/github/stars/Noenr/sheLLM?style=social" alt="GitHub stars">
   </a>
 </p>
 
