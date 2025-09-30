@@ -1,8 +1,4 @@
-______       __   __   __  ___  __
-  / __/ /  ___ / /  / /  /  |/  / / /
- _\ \/ _ \/ -_) /__/ /__/ /|_/ / /_/ 
-/___/_//_/\__/____/____/_/  /_/ (_) 
-			by noenr.
+ASCII : https://github.com/Noenr/sheLLM/blob/main/Content/Ascii-Init.txt
 
 # DATASHEET TECHNIQUE : Protocole sheLLM v7.0 (Release Candidate 1)
 
