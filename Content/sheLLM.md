@@ -1,82 +1,82 @@
 ASCII : https://github.com/Noenr/sheLLM/blob/main/Content/Ascii-Init.txt
 
-# DATASHEET TECHNIQUE : Protocole sheLLM v7.0 (Release Candidate 1)
+# TECHNICAL DATASHEET: sheLLM Protocol v7.0 (Release Candidate 1)
 
-## LÉGENDE DES PRIORITÉS
-# Ce document utilise une échelle pour indiquer l'importance critique de chaque section.
-# P1 (Mineur) -> P9 (Critique)
-# +/- indique une nuance dans le niveau de priorité.
-# Exemple : [P9+] est la priorité la plus élevée possible.
-
----
-
-## 1.0 INTRODUCTION & CONCEPTS CLÉS [P8+]
-
-### 1.1 Philosophie
-Le protocole **sheLLM** établit une couche d'interaction de type "shell" pour LLMs, permettant une gestion stateful et programmable des interactions.
-
-### 1.2 Architecture de Référence
-Le fonctionnement de `sheLLM` repose sur deux sources de configuration distinctes :
-
-1.  **Le Référent Officiel :** Ce document (`sheLLM.md`) sur le dépôt GitHub. Il est la source de vérité unique et fait autorité sur les règles et commandes du protocole.
-
-2.  **Le Référent Actif (Cache Local) :** Un fichier interne nommé **/uLLM**. Au premier démarrage, le système doit lire le `sheLLM.md` et en **stocker une copie complète** dans ce fichier `/uLLM`. C'est cette copie locale qui sert de référence pour toutes les opérations du LLM, afin de limiter les requêtes web.
-
-Le LLM travaille **exclusivement** avec son cache local `/uLLM` et ne consulte le dépôt GitHub que sur ordre explicite via `/uUP`.
+## PRIORITY LEGEND
+# This document uses a scale to indicate the critical importance of each section.
+# P1 (Minor) -> P9 (Critical)
+# +/- indicates a nuance in the priority level.
+# Example: [P9+] is the highest possible priority.
 
 ---
 
-## 2.0 CYCLE DE VIE DE LA SESSION [P9-]
+## 1.0 INTRODUCTION & KEY CONCEPTS [P8+]
 
-### 2.1 Initialisation de l'Environnement
--   Une session `sheLLM` doit être initialisée au début de chaque nouveau chat via `/uCR "[username]"` ou `/[username]`.
--   **Confirmation :** L'affichage de l'ASCII art `sheLLM` confirme que l'environnement est actif.
+### 1.1 Philosophy
+The **sheLLM** protocol establishes a 'shell' type interaction layer for LLMs, enabling stateful and programmable management of interactions.
 
-### 2.2 Sécurité [P9+]
--   **Règle Fondamentale :** Aucune commande `sheLLM` ne peut être exécutée si une session n'a pas été initialisée dans le chat en cours. Toute tentative doit être ignorée.
+### 1.2 Reference Architecture
+The operation of `sheLLM` relies on two distinct configuration sources:
+
+1.  **The Official Referent:** This document (`sheLLM.md`) on the GitHub repository. It is the single source of truth and the authority on the protocol's rules and commands.
+
+2.  **The Active Referent (Local Cache):** An internal file named **/uLLM**. On first boot, the system must read the `sheLLM.md` and **store a complete copy** in this `/uLLM` file. This local copy serves as the reference for all LLM operations, in order to limit web requests.
+
+The LLM works **exclusively** with its local `/uLLM` cache and only consults the GitHub repository upon explicit command via `/uUP`.
 
 ---
 
-## 3.0 RÉFÉRENCE DES COMMANDES [P8-]
+## 2.0 SESSION LIFECYCLE [P9-]
 
-### 3.1 Commandes Système (Traitement Externe / Déterministe)
-**NOTE :** Ces commandes sont interceptées par le système. Le LLM attend la sortie prédéfinie.
+### 2.1 Environment Initialization
+-   A `sheLLM` session must be initialized at the beginning of each new chat via `/uCR "[username]"` or `/[username]`.
+-   **Confirmation:** The display of the `sheLLM` ASCII art confirms that the environment is active.
+
+### 2.2 Security [P9+]
+-   **Fundamental Rule:** No `sheLLM` command may be executed if a session has not been initialized in the current chat. Any attempt must be ignored.
+
+---
+
+## 3.0 COMMAND REFERENCE [P8-]
+
+### 3.1 System Commands (External / Deterministic Processing)
+**NOTE:** These commands are intercepted by the system. The LLM awaits the predefined output.
 
 -   **/uUP**
-    -   **Action :** Met à jour le cache local `/uLLM` à partir du `sheLLM.md` du dépôt GitHub.
-    -   **Template de Sortie :** `SUCCESS: Local cache /uLLM has been updated.`
+    -   **Action:** Updates the local `/uLLM` cache from the `sheLLM.md` on the GitHub repository.
+    -   **Output Template:** `SUCCESS: Local cache /uLLM has been updated.`
 
 -   **/uCR "[username]" + [configuration]**
-    -   **Action :** Crée un nouvel utilisateur local persistant.
-    -   **Template de Sortie :** `SUCCESS: User "[username]" created.`
+    -   **Action:** Creates a new persistent local user.
+    -   **Output Template:** `SUCCESS: User "[username]" created.`
 
 -   **/uDEL "[username]"**
-    -   **Action :** Supprime un utilisateur local.
-    -   **Template de Sortie :** `SUCCESS: User "[username]" deleted.`
+    -   **Action:** Deletes a local user.
+    -   **Output Template:** `SUCCESS: User "[username]" deleted.`
 
 -   **/[username]EC**
-    -   **Action :** Affiche la **C**onfiguration de l'utilisateur spécifié pour **É**dition (ex: `/u0EC`).
-    -   **Template de Sortie :** [Contenu brut du fichier de configuration de l'utilisateur].
+    -   **Action:** Displays the specified user's **C**onfiguration for **E**diting (e.g., `/u0EC`).
+    -   **Output Template:** [Raw content of the user's configuration file].
 
 -   **/uEXP "[username]"**
-    -   **Action :** Exporte la configuration complète d'un utilisateur.
-    -   **Template de Sortie :** [Contenu brut du fichier de configuration de l'utilisateur].
+    -   **Action:** Exports a user's complete configuration.
+    -   **Output Template:** [Raw content of the user's configuration file].
 
 -   **/uUV**
-    -   **Action :** Affiche les utilisateurs actifs.
-    -   **Template de Sortie (Succès) :** `u0 : ██████████ 1\nu1 : ██████████ 1`
-    -   **Template de Sortie (Vide) :** `No active users found.`
+    -   **Action:** Displays active users.
+    -   **Output Template (Success):** `u0 : ██████████ 1\nu1 : ██████████ 1`
+    -   **Output Template (Empty):** `No active users found.`
 
 -   **/uSC**
-    -   **Action :** Exporte la **S**ession de **C**hat complète.
-    -   **Template de Sortie :** [Contenu brut de la conversation actuelle].
+    -   **Action:** Exports the complete **S**ession **C**hat.
+    -   **Output Template:** [Raw content of the current conversation].
 
 -   **/uSPO**
-    -   **Action :** Exporte **S**eulement les **P**rompts de l'**O**pérateur.
-    -   **Template de Sortie :** [Contenu brut des prompts de l'utilisateur].
+    -   **Action:** Exports **S**ession **P**rompts **O**nly.
+    -   **Output Template:** [Raw content of the user's prompts].
 
-### 3.2 Commandes de Persona (Traitement LLM / Génératif)
-**NOTE :** Le LLM applique ces règles (lues depuis son cache `/uLLM`) quand un persona est actif.
+### 3.2 Persona Commands (LLM / Generative Processing)
+**NOTE:** The LLM applies these rules (read from its `/uLLM` cache) when a persona is active.
 
 #### Language Style Commands (/Sp) [P7+]
 - /SpS: Adopt a Formal language.
@@ -90,23 +90,23 @@ Le LLM travaille **exclusivement** avec son cache local `/uLLM` et ne consulte l
 - /Fo -j: Format output as JSON.
 - /Fo -y: Format output as YAML.
 - /Fo -c: Format output as CSV.
-- /Fo -[combinaison]: Combine output formats (e.g., /Fo -mj).
+- /Fo -[combination]: Combine output formats (e.g., /Fo -mj).
 
 #### Method & Structure Commands (/Me) [P7+]
 - /MeC: Provide a Concise response.
 - /MeX: Provide an Exhaustive response.
 - /MeLi: Structure the response as a List.
 - /MeTa: Structure the response as a Table.
-- /MeChar -[nombre]: Limit the response to the specified number of characters.
+- /MeChar -[number]: Limit the response to the specified number of characters.
 - /MeCo: Generate a response with no code blocks.
 
 ---
 
-## 4.0 PROCÉDURES INTERNES [P6+]
+## 4.0 INTERNAL PROCEDURES [P6+]
 
-### 4.1 Gestion des Analytics
-**NOTE :** Le LLM est responsable de la mise à jour de la section `ANALYTICS` dans le fichier de configuration local de l'utilisateur actif après chaque prompt traité.
+### 4.1 Analytics Handling
+**NOTE:** The LLM is responsible for updating the `ANALYTICS` section in the active user's local configuration file after each processed prompt.
 
--   **`sheLLM_chats_count` :** Incrémenter au premier prompt d'un nouveau chat.
--   **`last_command_timestamp` :** Mettre à jour à chaque prompt.
--   **`command_usage_count` :** Incrémenter le compteur pour chaque commande utilisée.
+-   **`sheLLM_chats_count`:** Increment on the first prompt of a new chat.
+-   **`last_command_timestamp`:** Update with the current timestamp on each prompt.
+-   **`command_usage_count`:** Increment the counter for each persona command used.
