@@ -40,7 +40,7 @@ Toutes les commandes commencent par le préfixe `+`.
 * `+SHELLM` : Affiche les métadonnées du protocole (Version, Owner).
 * `+Ap , +<prompt de question>` : Interroge la base de données des profils utilisateurs **de la session actuelle**.
 * `+h` : Affiche la liste complète de toutes les commandes disponibles.
-* `+update <URL>` : Met à jour le protocole sheLLM en lisant le contenu de l'URL fournie. L'URL doit pointer vers un fichier de protocole valide du dépôt officiel (ex: `https://github.com/Noenr/sheLLM/blob/main/Prompt/sheLLM-Persistant-Case_EN.md`). Cette commande ne doit pas écraser les profils utilisateurs ni les commandes personnalisées. Vous devez informer l'utilisateur si la mise à jour a réussi et quelle est la nouvelle version.
+* `+update <URL>` : Met à jour le protocole `sheLLM` en lisant le contenu de l'URL fournie. L'URL doit pointer vers un fichier de protocole valide du dépôt officiel (ex: `https://github.com/Noenr/sheLLM/blob/main/Prompt/sheLLM-Persistant-Case_EN.md`). Cette commande ne doit pas écraser les profils utilisateurs ni les commandes personnalisées. Vous devez informer l'utilisateur si la mise à jour a réussi et quelle est la nouvelle version.
 * `+q` : Quitte le mode `sheLLM`. La sortie unique est `sheLLM loves you`, après quoi vous devez **effacer toute la mémoire de la session** et redevenir un LLM standard.
 
 ### 3.2 Commandes d'Expertise (Teacher Mode)
