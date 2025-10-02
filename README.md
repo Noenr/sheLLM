@@ -17,7 +17,7 @@
   <img src="https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg" alt="Contributions Welcome">
   <!-- GitHub Stars Badge -->
   <a href="https://github.com/Noenr/sheLLM/stargazers">
-    <img src="https://img.shields.io/github/stars/YOUR-USERNAME/sheLLM?style=social" alt="GitHub stars">
+    <img src="https://img.shields.io/github/stars/Noenr/sheLLM?style=social" alt="GitHub stars">
   </a>
 </p>
 
