@@ -1,7 +1,6 @@
 <!-- Logo -->
-
 <p align="center">
-<img src="./assets/sheLLM.png" alt="sheLLM Logo" width="700"/>
+<img src="./assets/sheLLM.png" alt="sheLL-M Logo" width="700"/>
 </p>
 
 <h1 align="center">sheLLM</h1>
@@ -22,68 +21,74 @@
 </a>
 </p>
 
-sheLLM is an initialization protocol that transforms a standard Large Language Model (LLM) into a stateful, command-driven operating shell. It operates entirely within the prompt, enabling advanced persona management, session-based memory, and precise output control through an intuitive command-line syntax.
+**sheLLM** is an initialization protocol that transforms a standard Large Language Model (LLM) into a stateful, command-driven operating shell. It operates entirely within the prompt, enabling advanced persona management, session-based memory, and precise output control through an intuitive command-line syntax.
 
-Core Concept: A Prompt-Based Operating Shell
-Instead of relying on an external system, sheLLM works by providing the LLM with a comprehensive "master prompt" at the beginning of a chat. This prompt bootstraps a complete operating environment with its own rules, commands, and memory management system, which the LLM then executes.
+## Core Concept: A Prompt-Based Operating Shell
 
-Two Operating Modes:
+Instead of relying on an external system, `sheLLM` works by providing the LLM with a comprehensive "master prompt" at the beginning of a chat. This prompt bootstraps a complete operating environment with its own rules, commands, and memory management system, which the LLM then executes.
 
-Persistent Mode: The LLM's memory (user profiles, custom commands) persists across different chat sessions. When invoked, it reloads its previous state.
+* **Two Operating Modes:**
 
-Ephemeral Mode: The memory is strictly limited to the current chat session and is wiped clean upon exit, ensuring total privacy.
+  * **Persistent Mode:** The LLM's memory (user profiles, custom commands) persists across different chat sessions. When invoked, it reloads its previous state.
 
-Secure Invocation: A session is only activated when the user explicitly calls sheLLM, shellm, or SHELLM. Before this invocation, the LLM remains in its standard, unaware state, preventing any accidental command execution.
+  * **Ephemeral Mode:** The memory is strictly limited to the current chat session and is wiped clean upon exit, ensuring total privacy.
 
-Integrated User Profiling: The sheLLM master prompt includes a final section where the user can define their own profile (name, age, keywords, etc.). The LLM memorizes this information to provide context-aware responses throughout the session.
+* **Secure Invocation:** A session is only activated when the user explicitly calls `sheLLM`, `shellm`, or `SHELLM`. Before this invocation, the LLM remains in its standard, unaware state, preventing any accidental command execution.
 
-Command Reference
-All commands are prefixed with +.
+* **Integrated User Profiling:** The `sheLLM` master prompt includes a final section where the user can define their own profile (name, age, keywords, etc.). The LLM memorizes this information to provide context-aware responses throughout the session.
 
-System Commands
-+cC <name> , +<definition>: Creates a new custom command.
+## Command Reference
 
-+SHELLM: Displays protocol metadata (Version, Owner).
+All commands are prefixed with `+`.
 
-+Ap , +<question>: Queries the user profile database.
+### System Commands
 
-+h: Displays a complete list of all available commands.
+* `+cC <name> , +<definition>`: Creates a new custom command.
 
-+update: Instructs the LLM to refresh its protocol rules (simulated).
+* `+SHELLM`: Displays protocol metadata (Version, Owner).
 
-+q: Exits the sheLLM mode for the current session.
+* `+Ap , +<question>`: Queries the user profile database.
 
-Expertise Commands (Teacher Mode)
-+Teacher-list: Lists available expert personas the LLM can embody.
+* `+h`: Displays a complete list of all available commands.
 
-+Teacher-<number>: Activates the corresponding expert mode, changing the output prefix to sheLLM > TeacherMode >.
+* `+update`: Instructs the LLM to refresh its protocol rules (simulated).
 
-+teacher-quit: Exits Teacher Mode and returns to the standard sheLLM shell.
+* `+q`: Exits the `sheLLM` mode for the current session.
 
-Output Control Commands
-Style (Spell): +SpS (Formal), +SpC (Standard), +SpF (Informal), +SpA (Slang).
+### Expertise Commands (Teacher Mode)
 
-Format: +Fo-t (Text), +Fo-m (Markdown), +Fo-j (JSON), etc. Can be combined (+Fo-tmj).
+* `+Teacher-list`: Lists available expert personas the LLM can embody.
 
-Method: +MeC (Concise), +MeX (Exhaustive), +MeLi (List), +MeTa (Table), +MeChar -[num], +MeCo (No Code).
+* `+Teacher-<number>`: Activates the corresponding expert mode, changing the output prefix to `sheLLM > TeacherMode >`.
 
-Usage Example
-The sheLLM workflow is simple and intuitive.
+* `+teacher-quit`: Exits Teacher Mode and returns to the standard `sheLLM` shell.
 
-# 1. Start a new chat and paste the chosen Master Prompt 
-# (e.g., sheLLM-Prompt-Persistent.md), filling in your user profile at the end.
-# Example: User Profile: Description(Bob, 42, keywords: data science, python)
+### Output Control Commands
 
-# 2. Invoke the shell to activate it.
+* **Style (Spell):** `+SpS` (Formal), `+SpC` (Standard), `+SpF` (Informal), `+SpA` (Slang).
+
+* **Format:** `+Fo-t` (Text), `+Fo-m` (Markdown), `+Fo-j` (JSON), etc. Can be combined (`+Fo-tmj`).
+
+* **Method:** `+MeC` (Concise), `+MeX` (Exhaustive), `+MeLi` (List), `+MeTa` (Table), `+MeChar -[num]`, `+MeCo` (No Code).
+
+## Usage Example
+
+The `sheLLM` workflow is simple and intuitive.
+
+1. Start a new chat and paste the chosen Master Prompt
+(e.g., sheLLM-Prompt-Persistent.md), filling in your user profile at the end.
+Example: User Profile: Description(Bob, 42, keywords: data science, python)
+2. Invoke the shell to activate it.
 sheLLM
 
-# LLM's Response, confirming initialization and readiness:
-> sheLLM >
+LLM's Response, confirming initialization and readiness:
+sheLLM >
 
-# 3. The shell is now active. You can use commands.
-# Let's ask for the capital of France, in a formal tone and as a list.
+3. The shell is now active. You can use commands.
+Let's ask for the capital of France, in a formal tone and as a list.
 +SpS +MeLi What is the capital of France?
 
-# LLM's Response, following the protocol:
-> sheLLM > 
-> - The capital of the French Republic is Paris.
+LLM's Response, following the protocol:
+sheLLM >
+
+The capital of the French Republic is Paris.
