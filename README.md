@@ -111,7 +111,7 @@ The `sheLLM` workflow is simple and intuitive.
 
 ```bash
 # 1. Start a new chat and paste the chosen Master Prompt 
-# (e.g., sheLLM-Prompt-Persistent.md), filling in your user profile at the end.
+# (e.g., Update sheLLM-Persistant-Case_EN.md), filling in your user profile at the end.
 # Example: User Profile: Description(Bob, 42, keywords: data science, python)
 
 # 2. Invoke the shell to activate it.
