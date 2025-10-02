@@ -109,31 +109,21 @@ All commands are prefixed with `+`.
 
 The `sheLLM` workflow is simple and intuitive.
 
-**1. Initialize the Shell**
-
-Start a new chat and paste the chosen Master Prompt (e.g., `sheLLM-Prompt-Persistent.md`), filling in your user profile. Then, invoke the shell:
-
 ```bash
+# 1. Start a new chat and paste the chosen Master Prompt 
+# (e.g., sheLLM-Prompt-Persistent.md), filling in your user profile at the end.
+# Example: User Profile: Description(Bob, 42, keywords: data science, python)
+
+# 2. Invoke the shell to activate it.
 sheLLM
-2. Receive Confirmation
 
-The LLM confirms initialization and readiness:
+# LLM's Response, confirming initialization and readiness:
+# sheLLM >
 
-Bash
-
-sheLLM >
-3. Use Commands
-
-The shell is now active. Let's ask for the capital of France, in a formal tone and as a list:
-
-Bash
-
+# 3. The shell is now active. You can use commands.
+# Let's ask for the capital of France, in a formal tone and as a list.
 +SpS +MeLi What is the capital of France?
-4. Get the Formatted Response
 
-The LLM follows the protocol and provides a structured answer:
-
-Markdown
-
-sheLLM > 
-- The capital of the French Republic is Paris.
+# LLM's Response, following the protocol:
+# sheLLM > 
+# - The capital of the French Republic is Paris.
