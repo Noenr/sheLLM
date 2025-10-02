@@ -21,6 +21,8 @@
 </a>
 </p>
 
+---
+
 **sheLLM** is an initialization protocol that transforms a standard Large Language Model (LLM) into a stateful, command-driven operating shell. It operates entirely within the prompt, enabling advanced persona management, session-based memory, and precise output control through an intuitive command-line syntax.
 
 ## Core Concept: A Prompt-Based Operating Shell
@@ -65,30 +67,73 @@ All commands are prefixed with `+`.
 
 ### Output Control Commands
 
-* **Style (Spell):** `+SpS` (Formal), `+SpC` (Standard), `+SpF` (Informal), `+SpA` (Slang).
+#### Style (Spell)
 
-* **Format:** `+Fo-t` (Text), `+Fo-m` (Markdown), `+Fo-j` (JSON), etc. Can be combined (`+Fo-tmj`).
+* `+SpS`: Adopt a **Supported** (Formal) language.
 
-* **Method:** `+MeC` (Concise), `+MeX` (Exhaustive), `+MeLi` (List), `+MeTa` (Table), `+MeChar -[num]`, `+MeCo` (No Code).
+* `+SpC`: Adopt a **Common** (Standard) language.
+
+* `+SpF`: Adopt a **Familiar** (Informal) language.
+
+* `+SpA`: Adopt a **Slang** language.
+
+#### Format
+
+* `+Fo-t`: Force the output to be plain **Text (TXT)**.
+
+* `+Fo-m`: Force the output to be formatted as **Markdown (MD)**.
+
+* `+Fo-j`: Force the output to be a **JSON** object.
+
+* `+Fo-y`: Force the output to be a **YAML** structure.
+
+* `+Fo-c`: Force the output to be formatted as **CSV**.
+
+* `+Fo-tmj`: Combine formats (e.g., text, markdown, JSON).
+
+#### Method (Method)
+
+* `+MeC`: The response must be **Concise**.
+
+* `+MeX`: The response must be **Exhaustive**.
+
+* `+MeLi`: The response must be structured as a **List**.
+
+* `+MeTa`: The response must be organized in a **Table**.
+
+* `+MeChar -[number]`: The response must not exceed the specified number of **characters**.
+
+* `+MeCo`: The response must not contain any **code blocks**.
 
 ## Usage Example
 
 The `sheLLM` workflow is simple and intuitive.
 
-1. Start a new chat and paste the chosen Master Prompt
-(e.g., sheLLM-Prompt-Persistent.md), filling in your user profile at the end.
-Example: User Profile: Description(Bob, 42, keywords: data science, python)
-2. Invoke the shell to activate it.
+**1. Initialize the Shell**
+
+Start a new chat and paste the chosen Master Prompt (e.g., `sheLLM-Prompt-Persistent.md`), filling in your user profile. Then, invoke the shell:
+
+```bash
 sheLLM
+2. Receive Confirmation
 
-LLM's Response, confirming initialization and readiness:
+The LLM confirms initialization and readiness:
+
+Bash
+
 sheLLM >
+3. Use Commands
 
-3. The shell is now active. You can use commands.
-Let's ask for the capital of France, in a formal tone and as a list.
+The shell is now active. Let's ask for the capital of France, in a formal tone and as a list:
+
+Bash
+
 +SpS +MeLi What is the capital of France?
+4. Get the Formatted Response
 
-LLM's Response, following the protocol:
-sheLLM >
+The LLM follows the protocol and provides a structured answer:
 
-The capital of the French Republic is Paris.
+Markdown
+
+sheLLM > 
+- The capital of the French Republic is Paris.
